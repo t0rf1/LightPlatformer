@@ -15,10 +15,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float movementSpeed = 5;
     [SerializeField] private float jumpForce = 5;
 
+    Animator animator;
+
     void Start()
     {
         rigBody2d = GetComponent<Rigidbody2D>();
         collider2d = GetComponent<BoxCollider2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -36,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed && IsGrounded())
         {
             rigBody2d.velocity = new Vector2(rigBody2d.velocity.x, jumpForce);
+            animator.SetBool("IsJumping", true);
         }
         if(context.canceled && rigBody2d.velocity.y > 0)
         {
@@ -49,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.BoxCast(collider2d.bounds.center, originVector, 0f, Vector2.down, .1f, groundLayer);
     }
 
+    //Kolizje z tagami
     private void OnTriggerEnter2D(Collider2D collision)
     {
         string colliderTag = collision.gameObject.tag;
