@@ -21,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
     {
         rigBody2d = GetComponent<Rigidbody2D>();
         collider2d = GetComponent<BoxCollider2D>();
-        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -39,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed && IsGrounded())
         {
             rigBody2d.velocity = new Vector2(rigBody2d.velocity.x, jumpForce);
-            animator.SetBool("IsJumping", true);
         }
         if(context.canceled && rigBody2d.velocity.y > 0)
         {
