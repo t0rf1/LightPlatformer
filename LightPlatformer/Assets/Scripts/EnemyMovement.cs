@@ -16,9 +16,12 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField] float movementSpeed = 5;
     [SerializeField] private float jumpForce = 5;
+    [SerializeField] private float checkWallDistanceJump = 1.8f;
+    [SerializeField] private float overlapDistanceStop = .2f;
+
+    private float distanceToPlayer;
 
     private int direction;
-
 
     void Start()
     {
@@ -28,10 +31,14 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
+        distanceToPlayer = playerPosition.position.x - transform.position.x;
         SetDirection();
+
+        //move
         rigBody2d.velocity = new Vector2(direction * movementSpeed, rigBody2d.velocity.y);
 
-        if (CheckWall())
+        //if wall is detected, jump
+        if (CheckWall(direction, checkWallDistanceJump))
         {
             Jump();
         }
@@ -39,23 +46,39 @@ public class EnemyMovement : MonoBehaviour
 
     private void SetDirection()
     {
-        if (playerPosition.position.x >= transform.position.x)
+        if (distanceToPlayer >= 0 + overlapDistanceStop)
         {
             direction = 1;
         }
-        else
+        else if (distanceToPlayer <= 0 - overlapDistanceStop)
         {
             direction = -1;
         }
+        else 
+        { 
+            direction = 0; 
+        }
     }
 
-    private bool CheckWall()
+    private bool CheckWall(int direction, float checkWallDistance)
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, 3f, groundLayer);
-        if (hit.collider != null)
+        if(direction >= 1)
         {
-            return true;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, checkWallDistance, groundLayer);
+            if (hit.collider != null)
+            {
+                return true;
+            }
         }
+        else
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, checkWallDistance, groundLayer);
+            if (hit.collider != null)
+            {
+                return true;
+            }
+        }
+
         return false;
     }
 

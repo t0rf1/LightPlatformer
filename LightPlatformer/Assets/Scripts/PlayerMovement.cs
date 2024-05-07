@@ -51,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.BoxCast(collider2d.bounds.center, originVector, 0f, Vector2.down, .1f, groundLayer);
     }
 
+    
     //Kolizje z tagami
     private void OnTriggerEnter2D(Collider2D collision)
     {
