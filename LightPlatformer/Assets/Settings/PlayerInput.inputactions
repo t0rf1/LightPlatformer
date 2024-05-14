@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Fire",
+                    "name": "Attack",
                     "type": "Button",
                     "id": "392f808e-381e-4509-b428-c87f18cc41a2",
                     "expectedControlType": "Button",
@@ -138,7 +138,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Fire",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -149,7 +149,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Fire",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
