@@ -13,7 +13,6 @@ public class PlayerSpriteController : MonoBehaviour
     {
         rigBody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-
     }
 
 
@@ -33,11 +32,11 @@ public class PlayerSpriteController : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(rigBody2d.velocity.x));
 
         //jumping
-        if (isJumping == false && Input.GetKeyDown(KeyCode.Space))
-        {
-            isJumping = true;
-            animator.SetBool("IsJumping", true);
-        }
+        //if (isJumping == false && Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    isJumping = true;
+        //    animator.SetBool("IsJumping", true);
+        //}
     }
     void Flip()
     {
