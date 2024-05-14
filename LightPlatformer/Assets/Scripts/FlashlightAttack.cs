@@ -22,10 +22,13 @@ public class FlashlightAttack : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
-        Debug.Log("Attacked");
+        if (context.performed)
+        {
+            Debug.Log("Attacked");
+        }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
         Debug.Log(collision.gameObject.tag);
     }
