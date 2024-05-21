@@ -6,12 +6,12 @@ public class FlashlightController : MonoBehaviour
 {
     private Camera mainCamera;
     private Vector3 mousePosition;
+
     void Start()
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         RotateToMouse();

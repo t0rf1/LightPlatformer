@@ -10,12 +10,10 @@ public class FlashlightAttack : MonoBehaviour
 
     private List<GameObject> enemies = new List<GameObject>();
 
-
     public LayerMask enemyLayer;
 
     void Start()
     {
-
     }
 
     void Update()
@@ -26,18 +24,36 @@ public class FlashlightAttack : MonoBehaviour
     {
         if (context.performed)
         {
-            foreach (GameObject enemy in enemies)
+            //Sort list by enemy distance to player
+            enemies.Sort(
+                delegate (GameObject enemy1, GameObject enemy2)
+                {
+                    float distance1 = (enemy1.transform.position - transform.position).magnitude;
+                    float distance2 = (enemy2.transform.position - transform.position).magnitude;
+                    return distance1.CompareTo(distance2);
+                }
+            );
+
+          
+            List<GameObject> enemiesToDestroy = new List<GameObject>(enemies);
+            foreach (GameObject enemy in enemiesToDestroy)
             {
                 Vector2 direction = enemy.transform.position - transform.position;
+
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, direction.normalized, Mathf.Infinity, enemyLayer);
                 if (hit.collider.gameObject == enemy)
                 {
-                    Destroy(enemy);
+                    DestroyEnemy(enemy);
                 }
             }
         }
     }
 
+    void DestroyEnemy(GameObject enemy)
+    {
+        enemies.Remove(enemy);
+        Destroy(enemy);
+    }
 
     //Adds object to list on collision enter, removes on collision exit
     void OnTriggerEnter2D(Collider2D collision)
