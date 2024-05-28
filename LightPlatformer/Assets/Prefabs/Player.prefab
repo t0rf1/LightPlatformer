@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546894933625745003}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.7387, y: 0, z: 0}
   m_LocalScale: {x: 0.4774, y: 0.6201, z: 1}
   m_ConstrainProportionsScale: 0
@@ -351,7 +351,7 @@ MonoBehaviour:
     m_FlipX: 0
     m_FlipY: 0
     m_InitialTrim: 0
-  m_CastingOption: 2
+  m_CastingOption: 1
   m_PreviousTrimEdge: 0
   m_PreviousEdgeProcessing: 1
   m_PreviousShadowCastingSource: 2
@@ -374,6 +374,7 @@ GameObject:
   - component: {fileID: 1678504693525731914}
   - component: {fileID: 4769507294977329412}
   - component: {fileID: 2899905582947383428}
+  - component: {fileID: 6958712584828924295}
   m_Layer: 7
   m_Name: Flashlight
   m_TagString: Untagged
@@ -409,6 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9593b3150f9b161448b9e9ab440832e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spotlight: {fileID: 2073815411150269004}
 --- !u!60 &4769507294977329412
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -471,10 +473,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e906d429aa996c64e9a11aee6851dab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  light: {fileID: 3367514363832788610}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 72
+  animator: {fileID: 0}
+--- !u!95 &6958712584828924295
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2522500665494048254}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 75d222b6073a658499d1ac9324936e6c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3367514363832788610
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,9 +546,9 @@ MonoBehaviour:
   m_ComponentVersion: 2
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.48
+  m_FalloffIntensity: 0.5
   m_Color: {r: 0.52156866, g: 0.9137255, b: 0.8669672, a: 1}
-  m_Intensity: 1.43
+  m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 1
   m_ApplyToSortingLayers: 00000000
@@ -545,10 +569,10 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 19.92
-  m_PointLightOuterAngle: 37.86
-  m_PointLightInnerRadius: 1.08
-  m_PointLightOuterRadius: 7.09
+  m_PointLightInnerAngle: 20
+  m_PointLightOuterAngle: 35
+  m_PointLightInnerRadius: 1
+  m_PointLightOuterRadius: 10
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1

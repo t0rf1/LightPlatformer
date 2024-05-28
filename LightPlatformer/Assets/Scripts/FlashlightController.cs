@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class FlashlightController : MonoBehaviour
 {
     private Camera mainCamera;
     private Vector3 mousePosition;
+
+    public Light2D spotlight;
 
     void Start()
     {
