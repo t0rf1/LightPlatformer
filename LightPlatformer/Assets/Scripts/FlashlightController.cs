@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class FlashlightController : MonoBehaviour
 {
     private Camera mainCamera;
     private Vector3 mousePosition;
+
+    public Light2D spotlight;
+
     void Start()
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         RotateToMouse();
