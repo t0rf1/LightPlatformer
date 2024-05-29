@@ -8,7 +8,7 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class EnemyMovement : MonoBehaviour
 {
-    private BoxCollider2D collider2d;
+    private CapsuleCollider2D collider2d;
     private Rigidbody2D rigBody2d;
     public LayerMask groundLayer;
 
@@ -26,7 +26,7 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         rigBody2d = GetComponent<Rigidbody2D>();
-        collider2d = GetComponent<BoxCollider2D>();
+        collider2d = GetComponent<CapsuleCollider2D>();
     }
 
     void Update()

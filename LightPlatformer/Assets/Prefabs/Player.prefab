@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 268543412726215333}
   - component: {fileID: 6494779180794366050}
   - component: {fileID: 6829272745221142023}
-  - component: {fileID: 4610331405013121721}
   - component: {fileID: 1230145970762899093}
-  - component: {fileID: 5751396341620792433}
+  - component: {fileID: 1613207464453631340}
+  - component: {fileID: 5640801196239772169}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546894933625745003}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.7387, y: 0, z: 0}
   m_LocalScale: {x: 0.4774, y: 0.6201, z: 1}
   m_ConstrainProportionsScale: 0
@@ -241,8 +241,30 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &4610331405013121721
-BoxCollider2D:
+--- !u!114 &1230145970762899093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546894933625745003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91492097416f2964cbc12d8044cc932b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  movementSpeed: 5
+  jumpForce: 10
+  healthSlider: {fileID: 0}
+  currentHP: 5
+  maxHP: 5
+  takingDamage: 1
+--- !u!70 &1613207464453631340
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -275,41 +297,10 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.007071167, y: 0.0021694899}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1.0295813, y: 1.004339}
-  m_EdgeRadius: 0
---- !u!114 &1230145970762899093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 546894933625745003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91492097416f2964cbc12d8044cc932b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  movementSpeed: 5
-  jumpForce: 10
-  healthSlider: {fileID: 0}
-  currentHP: 5
-  maxHP: 5
-  takingDamage: 1
---- !u!114 &5751396341620792433
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 1}
+  m_Direction: 0
+--- !u!114 &5640801196239772169
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -331,15 +322,15 @@ MonoBehaviour:
   m_AlphaCutoff: 0.1
   m_ApplyToSortingLayers: 00000000
   m_ShapePath:
-  - {x: -0.5, y: -0.5, z: 0}
-  - {x: -0.5, y: 0.5, z: 0}
-  - {x: 0.5, y: 0.5, z: 0}
-  - {x: 0.5, y: -0.5, z: 0}
+  - {x: -0.5000001, y: -0.5, z: 0}
+  - {x: -0.5000001, y: 0.5, z: 0}
+  - {x: 0.49999988, y: 0.5, z: 0}
+  - {x: 0.49999988, y: -0.5, z: 0}
   m_ShapePathHash: 0
   m_InstanceId: 0
   m_ShadowShape2DComponent: {fileID: 268543412726215333}
   m_ShadowShape2DProvider:
-    rid: 3875087490859401297
+    rid: 1299816930097496064
   m_ShadowCastingSource: 2
   m_ShadowMesh:
     m_Mesh: {fileID: 0}
@@ -350,7 +341,7 @@ MonoBehaviour:
     m_TrimEdge: 0
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0
+    m_InitialTrim: 0.02
   m_CastingOption: 1
   m_PreviousTrimEdge: 0
   m_PreviousEdgeProcessing: 1
@@ -359,7 +350,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 3875087490859401297
+    - rid: 1299816930097496064
       type: {class: ShadowShape2DProvider_SpriteRenderer, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data: 
 --- !u!1 &2522500665494048254
@@ -476,7 +467,8 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 72
-  animator: {fileID: 0}
+  animator: {fileID: 6958712584828924295}
+  canAttack: 0
 --- !u!95 &6958712584828924295
 Animator:
   serializedVersion: 7

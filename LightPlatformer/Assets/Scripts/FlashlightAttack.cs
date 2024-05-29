@@ -10,8 +10,11 @@ public class FlashlightAttack : MonoBehaviour
 
     [SerializeField] Animator animator;
 
+    public bool canAttack;
+
     void Start()
     {
+        canAttack = true;
     }
 
     void Update()
@@ -23,8 +26,12 @@ public class FlashlightAttack : MonoBehaviour
     {
         if (context.performed)
         {
-            animator.SetTrigger("Attacked");
-            DeleteEnemy();
+            if (canAttack)
+            {
+                animator.SetTrigger("Attacked");
+                canAttack = false;
+                DeleteEnemy();
+            }
         }
     }
 
@@ -40,7 +47,7 @@ public class FlashlightAttack : MonoBehaviour
             }
         );
 
-        //Adds new list of enemies in range
+        //Duplicates list of enemies in range
         List<GameObject> enemiesToDestroy = new List<GameObject>(enemies);
 
         //For each enemy in range, checks if can be hit, then kills
@@ -60,6 +67,11 @@ public class FlashlightAttack : MonoBehaviour
     {
         enemies.Remove(enemy);
         Destroy(enemy);
+    }
+
+    void SetCanAttack()
+    {
+        canAttack = true;
     }
 
     //Adds object to list on collision enter, removes on collision exit
