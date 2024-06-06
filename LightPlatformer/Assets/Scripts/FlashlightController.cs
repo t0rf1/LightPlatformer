@@ -5,6 +5,23 @@ using UnityEngine.Rendering.Universal;
 
 public class FlashlightController : MonoBehaviour
 {
+    bool canMove = true;
+    private void Awake()
+    {
+        GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
+    }
+
+    private void GameManager_OnGameStateChanged(gameState state)
+    {
+        canMove = (state == gameState.Game);
+    }
+
+
     private Camera mainCamera;
     private Vector3 mousePosition;
 
@@ -17,7 +34,9 @@ public class FlashlightController : MonoBehaviour
 
     void Update()
     {
-        RotateToMouse();
+        if (canMove) {
+            RotateToMouse();
+        }
     }
 
     private void RotateToMouse()

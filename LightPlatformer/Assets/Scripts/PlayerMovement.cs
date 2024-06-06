@@ -102,6 +102,8 @@ public class PlayerMovement : MonoBehaviour
     void Die()
     {
         Debug.Log("dies");
+        GameManager.Instance.UpdateGameState(gameState.DeathScreen);
+        Time.timeScale = 0;
     }
 
     //Collision on tags with triggers
@@ -112,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //Respawn
             case "Hole":
-                rigBody2d.MovePosition(spawnPoint.position);
+                Die();
                 break;
 
             //Add HP
