@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1230145970762899093}
   - component: {fileID: 1613207464453631340}
   - component: {fileID: 5640801196239772169}
+  - component: {fileID: 8909642843827602723}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -30,9 +31,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546894933625745003}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.7387, y: 0, z: 0}
-  m_LocalScale: {x: 0.4774, y: 0.6201, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6334271507738635961}
@@ -81,8 +82,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.98625064, b: 1, a: 1}
+  m_Sprite: {fileID: -7081106310681810826, guid: 0c5174f6287e33b41a4b5c4de0225bd3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -257,12 +258,13 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  movementSpeed: 5
-  jumpForce: 10
+  movementSpeed: 3
+  jumpForce: 7
   healthSlider: {fileID: 0}
   currentHP: 5
   maxHP: 5
   takingDamage: 1
+  animator: {fileID: 8909642843827602723}
 --- !u!70 &1613207464453631340
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -341,7 +343,7 @@ MonoBehaviour:
     m_TrimEdge: 0
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0.02
+    m_InitialTrim: 0
   m_CastingOption: 1
   m_PreviousTrimEdge: 0
   m_PreviousEdgeProcessing: 1
@@ -353,6 +355,28 @@ MonoBehaviour:
     - rid: 1299816930097496064
       type: {class: ShadowShape2DProvider_SpriteRenderer, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
       data: 
+--- !u!95 &8909642843827602723
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546894933625745003}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 83fe7211318b44e43afe9f54e42ba7fe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2522500665494048254
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,8 +473,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0, y: 0}
-      - {x: 15, y: 2.5}
-      - {x: 15, y: -2.5}
+      - {x: 13, y: 2.5}
+      - {x: 13, y: -2.5}
   m_UseDelaunayMesh: 0
 --- !u!114 &2899905582947383428
 MonoBehaviour:
@@ -557,14 +581,14 @@ MonoBehaviour:
   m_ShadowSoftness: 0.2
   m_ShadowSoftnessFalloffIntensity: 0.5
   m_ShadowVolumeIntensityEnabled: 1
-  m_ShadowVolumeIntensity: 0.5
+  m_ShadowVolumeIntensity: 1
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 20
   m_PointLightOuterAngle: 35
   m_PointLightInnerRadius: 1
-  m_PointLightOuterRadius: 10
+  m_PointLightOuterRadius: 7
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
