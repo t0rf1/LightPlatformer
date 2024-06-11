@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -10,7 +11,7 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rigBody2d;
-    private BoxCollider2D collider2d;
+    private CapsuleCollider2D collider2d;
 
     public Transform spawnPoint;
     public LayerMask groundLayer;
@@ -33,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rigBody2d = GetComponent<Rigidbody2D>();
-        collider2d = GetComponent<BoxCollider2D>();
+        collider2d = GetComponent<CapsuleCollider2D>();
     }
 
     void Update()
@@ -86,6 +87,11 @@ public class PlayerMovement : MonoBehaviour
         rigBody2d.AddForce(direction * 5, ForceMode2D.Impulse);
         knockbackeffect = true;
 
+        if(currentHP <= 0)
+        {
+            Die();
+        }
+
         UpdateSlider();
     }
 
@@ -107,6 +113,12 @@ public class PlayerMovement : MonoBehaviour
             return new Vector2(1, .7f);
         }
     }
+    void Die()
+    {
+        Debug.Log("dies");
+        GameManager.Instance.UpdateGameState(gameState.DeathScreen);
+        Time.timeScale = 0;
+    }
 
     //Collision on tags with triggers
     private void OnTriggerEnter2D(Collider2D collision)
@@ -116,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //Respawn
             case "Hole":
-                rigBody2d.MovePosition(spawnPoint.position);
+                Die();
                 break;
 
             //Add HP
