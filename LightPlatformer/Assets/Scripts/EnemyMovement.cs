@@ -22,6 +22,7 @@ public class EnemyMovement : MonoBehaviour
     private float distanceToPlayer;
 
     private int direction;
+    public SpriteRenderer spriteRenderer;
 
     void Start()
     {
@@ -36,6 +37,18 @@ public class EnemyMovement : MonoBehaviour
 
         //move
         rigBody2d.velocity = new Vector2(direction * movementSpeed, rigBody2d.velocity.y);
+
+        if (rigBody2d.velocity.x < 0)
+        {
+            spriteRenderer.flipX = true;
+
+        }
+        else if (rigBody2d.velocity.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+
+
 
         //if wall is detected, jump
         if (CheckWall(direction, checkWallDistanceJump))
@@ -53,6 +66,7 @@ public class EnemyMovement : MonoBehaviour
         else if (distanceToPlayer <= 0 - overlapDistanceStop)
         {
             direction = -1;
+            
         }
         else 
         { 
