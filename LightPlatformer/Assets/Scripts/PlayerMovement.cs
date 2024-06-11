@@ -25,8 +25,10 @@ public class PlayerMovement : MonoBehaviour
     public float maxHP = 5;
     public int takingDamage = 1;
     bool knockbackeffect = false;
+    
 
-    Animator animator;
+
+    public Animator animator;
 
     void Start()
     {
@@ -46,6 +48,18 @@ public class PlayerMovement : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         horizontal = context.ReadValue<Vector2>().x;
+
+        animator.SetFloat("Speed", Mathf.Abs(horizontal));
+
+        if (horizontal < 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+
+        }
+        else if (horizontal > 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
     }
 
     public void Jump(InputAction.CallbackContext context)
