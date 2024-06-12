@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
-        Vector2 originVector = new Vector2(collider2d.size.x, collider2d.size.y);
+        Vector2 originVector = new Vector2(collider2d.size.x - .1f, collider2d.size.y - .1f);
         return Physics2D.BoxCast(collider2d.bounds.center, originVector, 0f, Vector2.down, .1f, groundLayer);
     }
 

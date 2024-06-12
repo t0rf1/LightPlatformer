@@ -19,7 +19,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float checkWallDistanceJump = 1.8f;
     [SerializeField] private float overlapDistanceStop = .2f;
 
-    private float distanceToPlayer;
+    private Vector2 vectorToPlayer;
+    private float triggerDistance = 10f;
 
     private int direction;
     public SpriteRenderer spriteRenderer;
@@ -32,23 +33,15 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        distanceToPlayer = playerPosition.position.x - transform.position.x;
+        vectorToPlayer = playerPosition.position - transform.position;
         SetDirection();
 
-        //move
-        rigBody2d.velocity = new Vector2(direction * movementSpeed, rigBody2d.velocity.y);
-
-        if (rigBody2d.velocity.x < 0)
+        //move if distance to player is less than trigger distance
+        Debug.Log(vectorToPlayer.magnitude);
+        if (vectorToPlayer.magnitude < triggerDistance)
         {
-            spriteRenderer.flipX = true;
-
+            rigBody2d.velocity = new Vector2(direction * movementSpeed, rigBody2d.velocity.y);
         }
-        else if (rigBody2d.velocity.x > 0)
-        {
-            spriteRenderer.flipX = false;
-        }
-
-
 
         //if wall is detected, jump
         if (CheckWall(direction, checkWallDistanceJump))
@@ -57,16 +50,18 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    //Changes walk direction and flippes sprite
     private void SetDirection()
     {
-        if (distanceToPlayer >= 0 + overlapDistanceStop)
+        if (vectorToPlayer.x >= 0 + overlapDistanceStop)
         {
             direction = 1;
+            spriteRenderer.flipX = false;
         }
-        else if (distanceToPlayer <= 0 - overlapDistanceStop)
+        else if (vectorToPlayer.x <= 0 - overlapDistanceStop)
         {
             direction = -1;
-            
+            spriteRenderer.flipX = true;
         }
         else 
         { 

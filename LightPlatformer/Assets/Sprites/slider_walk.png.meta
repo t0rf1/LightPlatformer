@@ -1,25 +1,16 @@
 fileFormatVersion: 2
-guid: 0c5174f6287e33b41a4b5c4de0225bd3
+guid: 1341e1869a883cb45b99e2beafad5b45
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7081106310681810826
-    second: Sprite_idle_0
+      213: -5302892226209570543
+    second: slider_walk_0
   - first:
-      213: -8222080380302184633
-    second: Sprite_idle_1
+      213: -566148459458121077
+    second: slider_walk_1
   - first:
-      213: 3405479517296044680
-    second: Sprite_idle_2
-  - first:
-      213: 3413243670392428394
-    second: Sprite_idle_3
-  - first:
-      213: 1111668408071355586
-    second: Sprite_idle_4
-  - first:
-      213: -520333546892419706
-    second: Sprite_idle_5
+      213: 830318742025756266
+    second: slider_walk_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -66,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 15
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -115,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprite_idle_0
+      name: slider_walk_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 0
-        width: 14
-        height: 16
+        x: 0
+        y: 31
+        width: 25
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -129,20 +120,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 678a807e35bdabd90800000000000000
-      internalID: -7081106310681810826
+      spriteID: 111299ebd975866b0800000000000000
+      internalID: -5302892226209570543
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_idle_1
+      name: slider_walk_1
       rect:
         serializedVersion: 2
-        x: 18
-        y: 0
-        width: 14
-        height: 16
+        x: 31
+        y: 31
+        width: 27
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +141,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 74f2161e47d45ed80800000000000000
-      internalID: -8222080380302184633
+      spriteID: b823dd7c9f2a428f0800000000000000
+      internalID: -566148459458121077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_idle_2
+      name: slider_walk_2
       rect:
         serializedVersion: 2
-        x: 34
-        y: 0
-        width: 14
-        height: 16
+        x: 64
+        y: 31
+        width: 27
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,71 +162,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 88aac46f391b24f20800000000000000
-      internalID: 3405479517296044680
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_idle_3
-      rect:
-        serializedVersion: 2
-        x: 50
-        y: 0
-        width: 14
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a675799b8074e5f20800000000000000
-      internalID: 3413243670392428394
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_idle_4
-      rect:
-        serializedVersion: 2
-        x: 66
-        y: 0
-        width: 14
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2ccfd1bf6807d6f00800000000000000
-      internalID: 1111668408071355586
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_idle_5
-      rect:
-        serializedVersion: 2
-        x: 82
-        y: 0
-        width: 14
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 68d12cc556767c8f0800000000000000
-      internalID: -520333546892419706
+      spriteID: a6e5bc42f72e58b00800000000000000
+      internalID: 830318742025756266
       vertices: []
       indices: 
       edges: []
@@ -251,12 +179,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Sprite_idle_0: -7081106310681810826
-      Sprite_idle_1: -8222080380302184633
-      Sprite_idle_2: 3405479517296044680
-      Sprite_idle_3: 3413243670392428394
-      Sprite_idle_4: 1111668408071355586
-      Sprite_idle_5: -520333546892419706
+      slider_walk_0: -5302892226209570543
+      slider_walk_1: -566148459458121077
+      slider_walk_2: 830318742025756266
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
