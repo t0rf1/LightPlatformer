@@ -22,19 +22,14 @@ public class CanvasController : MonoBehaviour
         deathScreen.SetActive(state == gameState.DeathScreen);
     }
 
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void GoToScene(int sceneNumber)
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(sceneNumber);
+    }
+
+    public void CloseApplication()
+    {
+        Application.Quit();
     }
 }
