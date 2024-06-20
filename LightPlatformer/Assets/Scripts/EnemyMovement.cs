@@ -1,10 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -14,6 +8,9 @@ public class EnemyMovement : MonoBehaviour
     public LayerMask groundLayer;
 
     [SerializeField] Transform playerPosition;
+
+    //Eye light
+    [SerializeField] Transform eyeLight;
 
     //Movement
     [SerializeField] float movementSpeed = 5;
@@ -42,7 +39,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(triggerEnterSoundPlay);
+        Debug.Log("Light: " + eyeLight.position + "Enemy: " + transform.position);
 
         vectorToPlayer = playerPosition.position - transform.position;
         SetDirection();
@@ -50,11 +47,11 @@ public class EnemyMovement : MonoBehaviour
         //move if distance to player is less than trigger distance
         if (vectorToPlayer.magnitude < triggerDistance)
         {
-            if(triggerEnterSoundPlay)
+            if (triggerEnterSoundPlay)
             {
                 AudioScript.audioSrc.Play();
                 AudioScript.PlayRandomSound(AudioScript.clipList1);
-                triggerEnterSoundPlay=false;
+                triggerEnterSoundPlay = false;
             }
 
             rigBody2d.velocity = new Vector2(direction * movementSpeed, rigBody2d.velocity.y);
@@ -66,36 +63,45 @@ public class EnemyMovement : MonoBehaviour
             triggerEnterSoundPlay = true;
         }
 
-
-            //if wall is detected, jump
-            if (CheckWall(direction, checkWallDistanceJump))
+        //if wall is detected, jump
+        if (CheckWall(direction, checkWallDistanceJump))
         {
             Jump();
         }
     }
 
-    //Changes walk direction and flippes sprite
+    //Changes walk direction and flippes sprite + eye light
     private void SetDirection()
     {
         if (vectorToPlayer.x >= 0 + overlapDistanceStop)
         {
             direction = 1;
             spriteRenderer.flipX = false;
+
+            if(eyeLight.localPosition.x < 0)
+            {
+                eyeLight.localPosition *= new Vector2(-1, 1);
+            }
         }
         else if (vectorToPlayer.x <= 0 - overlapDistanceStop)
         {
             direction = -1;
             spriteRenderer.flipX = true;
+
+            if (eyeLight.localPosition.x > 0)
+            {
+                eyeLight.localPosition *= new Vector2(-1, 1);
+            }
         }
-        else 
-        { 
-            direction = 0; 
+        else
+        {
+            direction = 0;
         }
     }
 
     private bool CheckWall(int direction, float checkWallDistance)
     {
-        if(direction >= 1)
+        if (direction >= 1)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, checkWallDistance, groundLayer);
             if (hit.collider != null)

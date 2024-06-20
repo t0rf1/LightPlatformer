@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Taking damage
     [SerializeField] Slider healthSlider;
-    public float currentHP = 5;
+    float currentHP;
     public float maxHP = 5;
     public int takingDamage = 1;
     bool knockbackeffect = false;
@@ -38,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
         rigBody2d = GetComponent<Rigidbody2D>();
         collider2d = GetComponent<CapsuleCollider2D>();
         AudioScript = GetComponent<RandomAudioPlayer>();
+
+        currentHP = maxHP;
     }
 
     void Update()

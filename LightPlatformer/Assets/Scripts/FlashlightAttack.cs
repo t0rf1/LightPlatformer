@@ -31,11 +31,11 @@ public class FlashlightAttack : MonoBehaviour
         {
             if (canAttack)
             {
+                AudioScript.PlayRandomSound(AudioScript.clipList1);
                 animator.SetTrigger("Attacked");
                 canAttack = false;
                 DeleteEnemy();
             }
-            AudioScript.PlayRandomSound(AudioScript.clipList1);
         }
     }
 
