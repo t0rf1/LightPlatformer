@@ -37,4 +37,9 @@ public class CanvasController : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(sceneNumber);
     }
+
+    public void Deactivate(GameObject window)
+    {
+        window.SetActive(false);
+    }
 }
