@@ -264,7 +264,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   movementSpeed: 2
-  jumpForce: 7.2
+  jumpForce: 7
   healthSlider: {fileID: 0}
   maxHP: 10
   takingDamage: 1
