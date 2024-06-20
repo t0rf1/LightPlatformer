@@ -6,6 +6,8 @@ public class FlashlightAttack : MonoBehaviour
 {
     private List<GameObject> enemies = new List<GameObject>();
 
+    RandomAudioPlayer AudioScript;
+
     public LayerMask enemyLayer;
 
     [SerializeField] Animator animator;
@@ -15,6 +17,7 @@ public class FlashlightAttack : MonoBehaviour
     void Start()
     {
         canAttack = true;
+        AudioScript = GetComponent<RandomAudioPlayer>();
     }
 
     void Update()
@@ -32,6 +35,7 @@ public class FlashlightAttack : MonoBehaviour
                 canAttack = false;
                 DeleteEnemy();
             }
+            AudioScript.PlayRandomSound(AudioScript.clipList1);
         }
     }
 

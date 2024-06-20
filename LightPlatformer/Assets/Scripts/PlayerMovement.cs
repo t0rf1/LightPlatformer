@@ -26,8 +26,10 @@ public class PlayerMovement : MonoBehaviour
     public float maxHP = 5;
     public int takingDamage = 1;
     bool knockbackeffect = false;
-    
 
+
+    RandomAudioPlayer AudioScript;
+    bool soundPlay = true;
 
     public Animator animator;
 
@@ -35,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rigBody2d = GetComponent<Rigidbody2D>();
         collider2d = GetComponent<CapsuleCollider2D>();
+        AudioScript = GetComponent<RandomAudioPlayer>();
     }
 
     void Update()
@@ -43,7 +46,19 @@ public class PlayerMovement : MonoBehaviour
         {
             rigBody2d.velocity = new Vector2(horizontal * movementSpeed, rigBody2d.velocity.y);
         }
-        
+
+        if (horizontal != 0){
+            if(soundPlay)
+            {
+                AudioScript.audioSrc.Play();
+                soundPlay = false;
+            }
+        }
+        else
+        {
+            AudioScript.audioSrc.Stop();
+            soundPlay = true;
+        }
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -148,7 +163,6 @@ public class PlayerMovement : MonoBehaviour
         {
             //Enemy contact
             case "Enemy":
-                Debug.Log(SetKnockbackDirection(collision.gameObject));
                 TakeDamage(takingDamage, SetKnockbackDirection(collision.gameObject));
                 break;
 
