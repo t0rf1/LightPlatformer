@@ -32,4 +32,9 @@ public class CanvasController : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void Deactivate(GameObject window)
+    {
+        window.SetActive(false);
+    }
 }

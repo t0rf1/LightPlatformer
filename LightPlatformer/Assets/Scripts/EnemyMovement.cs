@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody2D rigBody2d;
     public LayerMask groundLayer;
 
-    [SerializeField] Transform playerPosition;
+    GameObject player;
 
     //Eye light
     [SerializeField] Transform eyeLight;
@@ -22,7 +22,7 @@ public class EnemyMovement : MonoBehaviour
 
     //Trigger distance
     private Vector2 vectorToPlayer;
-    private float triggerDistance = 10f;
+    public float triggerDistance = 10f;
 
     //Sprite and direction
     private int direction;
@@ -35,6 +35,8 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
+
         rigBody2d = GetComponent<Rigidbody2D>();
         collider2d = GetComponent<CapsuleCollider2D>();
         AudioScript = GetComponent<RandomAudioPlayer>();
@@ -42,7 +44,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        vectorToPlayer = playerPosition.position - transform.position;
+        vectorToPlayer = player.transform.position - transform.position;
         SetDirection();
 
         //if distance to player is less than trigger distance
