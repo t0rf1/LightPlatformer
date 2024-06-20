@@ -1,40 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 public class FlashlightController : MonoBehaviour
 {
-    bool canMove = true;
-    private void Awake()
-    {
-        GameManager.OnGameStateChanged += GameManager_OnGameStateChanged;
-    }
-
-    private void OnDestroy()
-    {
-        GameManager.OnGameStateChanged -= GameManager_OnGameStateChanged;
-    }
-
-    private void GameManager_OnGameStateChanged(gameState state)
-    {
-        canMove = (state == gameState.Game);
-    }
-
-
     private Camera mainCamera;
     private Vector3 mousePosition;
 
     public Light2D spotlight;
 
+    DieStopper dieStopper;
+
     void Start()
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        dieStopper = GetComponent<DieStopper>();
     }
 
     void Update()
     {
-        if (canMove) {
+        if (dieStopper.canMove)
+        {
             RotateToMouse();
         }
     }

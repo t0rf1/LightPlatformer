@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    #region Variables
+
     //Essentials
     private CapsuleCollider2D collider2d;
     private Rigidbody2D rigBody2d;
@@ -29,6 +31,7 @@ public class EnemyMovement : MonoBehaviour
     //Sounds
     RandomAudioPlayer AudioScript;
     bool triggerEnterSoundPlay = true;
+    #endregion
 
     void Start()
     {
@@ -39,14 +42,13 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Light: " + eyeLight.position + "Enemy: " + transform.position);
-
         vectorToPlayer = playerPosition.position - transform.position;
         SetDirection();
 
-        //move if distance to player is less than trigger distance
+        //if distance to player is less than trigger distance
         if (vectorToPlayer.magnitude < triggerDistance)
         {
+            //Play sound on trigger zone enter
             if (triggerEnterSoundPlay)
             {
                 AudioScript.audioSrc.Play();
@@ -55,8 +57,11 @@ public class EnemyMovement : MonoBehaviour
             }
 
             rigBody2d.velocity = new Vector2(direction * movementSpeed, rigBody2d.velocity.y);
+
+            AudioScript.PlayRandomSoundAtRandomTime(AudioScript.clipList1, 2f, 10f);
         }
 
+        //If player is outside of trigger zone, allow sound playing
         if (vectorToPlayer.magnitude > triggerDistance)
         {
             AudioScript.audioSrc.Stop();

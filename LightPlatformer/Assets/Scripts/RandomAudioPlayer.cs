@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class RandomAudioPlayer : MonoBehaviour
@@ -8,22 +9,38 @@ public class RandomAudioPlayer : MonoBehaviour
     public List<AudioClip> clipList1;
     public List<AudioClip> clipList2;
 
+    bool canPlay = true;
+
+    DieStopper dieStopper;
+
     void Start()
     {
         audioSrc = GetComponent<AudioSource>();
+        dieStopper = GetComponent<DieStopper>();
+    }
+
+    private void Update()
+    {
+        if (!dieStopper.canMove)
+        {
+            audioSrc.Stop();
+        }
     }
 
     public void PlayRandomSound(List<AudioClip> list)
     {
-        AudioClip clipPlay = list[Random.Range(0, list.Count)];
-        audioSrc.PlayOneShot(clipPlay);
+        if (dieStopper.canMove)
+        {
+            AudioClip clipPlay = list[Random.Range(0, list.Count)];
+            audioSrc.PlayOneShot(clipPlay);
+        }
     }
 
     public void LoopPlayToggle(int condition)
     {
         if (condition != 0)
         {
-            if(!audioSrc.isPlaying)
+            if (!audioSrc.isPlaying)
             {
                 Debug.Log("started playing");
                 audioSrc.Play();
@@ -36,20 +53,21 @@ public class RandomAudioPlayer : MonoBehaviour
         }
     }
 
-    public void PlaySoundRepeteadly(List<AudioClip> list, float interval)
+    public void PlayRandomSoundAtRandomTime(List<AudioClip> list, float minTime, float maxTime)
     {
-        StartCoroutine(PerformActionRepeatedly(list ,interval));
+        if (canPlay && dieStopper.canMove)
+        {
+            float interval = Random.Range(minTime, maxTime);
+            StartCoroutine(PerformActionRandomly(list, interval));
+            canPlay = false;
+        }
     }
 
-    IEnumerator PerformActionRepeatedly(List<AudioClip> list, float interval)
+    IEnumerator PerformActionRandomly(List<AudioClip> list, float interval)
     {
-        while (true)
-        {
-            
-            PlayRandomSound(list);
+        yield return new WaitForSeconds(interval);
 
-            // Odczekaj "interval" sekund przed ponownym wykonaniem akcji
-            yield return new WaitForSeconds(interval);
-        }
+        PlayRandomSound(list);
+        canPlay = true;
     }
 }

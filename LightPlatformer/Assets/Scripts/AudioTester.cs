@@ -26,7 +26,7 @@ public class AudioTester : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            AudioScript.PlaySoundRepeteadly(AudioScript.clipList1, 5f);
+
         }
     }
 

@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 8402190330060642322}
   - component: {fileID: 5756244720537576891}
   - component: {fileID: 8032743836151488512}
+  - component: {fileID: 5555143440593860893}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -523,6 +524,19 @@ MonoBehaviour:
   audioSrc: {fileID: 0}
   clipList1: []
   clipList2: []
+--- !u!114 &5555143440593860893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546894933625745003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f05acbf7a62f54548826902dde71d387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canMove: 1
 --- !u!1 &2522500665494048254
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,6 +553,7 @@ GameObject:
   - component: {fileID: 8136831836819347242}
   - component: {fileID: 7043164347605082175}
   - component: {fileID: 5178136976853430899}
+  - component: {fileID: 2189267528090787357}
   m_Layer: 7
   m_Name: Flashlight
   m_TagString: Untagged
@@ -622,8 +637,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0, y: 0}
-      - {x: 13, y: 2.5}
-      - {x: 13, y: -2.5}
+      - {x: 6, y: 2}
+      - {x: 6, y: -2}
   m_UseDelaunayMesh: 0
 --- !u!114 &2899905582947383428
 MonoBehaviour:
@@ -800,6 +815,19 @@ MonoBehaviour:
   clipList1:
   - {fileID: 8300000, guid: 97dbf52ae068cd14ebb3e1e5e6aa22d0, type: 3}
   clipList2: []
+--- !u!114 &2189267528090787357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2522500665494048254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f05acbf7a62f54548826902dde71d387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canMove: 1
 --- !u!1 &3367514363832788610
 GameObject:
   m_ObjectHideFlags: 0

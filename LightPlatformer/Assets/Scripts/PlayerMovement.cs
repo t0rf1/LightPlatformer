@@ -10,13 +10,14 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //Essentals
     private Rigidbody2D rigBody2d;
     private CapsuleCollider2D collider2d;
 
+    //Movement
     public Transform spawnPoint;
     public LayerMask groundLayer;
     private float horizontal;
-
     [SerializeField] private float movementSpeed = 5;
     [SerializeField] private float jumpForce = 5;
 
@@ -27,11 +28,13 @@ public class PlayerMovement : MonoBehaviour
     public int takingDamage = 1;
     bool knockbackeffect = false;
 
-
+    //Audio
     RandomAudioPlayer AudioScript;
     bool soundPlay = true;
 
+    //Animation
     public Animator animator;
+
 
     void Start()
     {

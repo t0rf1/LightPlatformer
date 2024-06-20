@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,15 +15,25 @@ public class FlashlightAttack : MonoBehaviour
 
     public bool canAttack;
 
+    DieStopper dieStopper;
+
     void Start()
     {
         canAttack = true;
         AudioScript = GetComponent<RandomAudioPlayer>();
+        dieStopper = GetComponent<DieStopper>();
     }
 
     void Update()
     {
-
+        if(canAttack && dieStopper.canMove)
+        {
+            canAttack = true;
+        }
+        else
+        {
+            canAttack = false;
+        }
     }
 
     public void Attack(InputAction.CallbackContext context)
