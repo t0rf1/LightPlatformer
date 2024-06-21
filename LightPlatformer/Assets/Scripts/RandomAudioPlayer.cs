@@ -31,27 +31,19 @@ public class RandomAudioPlayer : MonoBehaviour
     {
         if (dieStopper.canMove)
         {
-            AudioClip clipPlay = list[Random.Range(0, list.Count)];
+            AudioClip clipPlay = list[Random.Range(0, list.Count - 1)];
             audioSrc.PlayOneShot(clipPlay);
         }
     }
 
-    public void LoopPlayToggle(int condition)
+
+    public void PlaySound(List<AudioClip> list)
     {
-        if (condition != 0)
-        {
-            if (!audioSrc.isPlaying)
-            {
-                Debug.Log("started playing");
-                audioSrc.Play();
-            }
-        }
-        else
-        {
-            Debug.Log("Stopped");
-            audioSrc.Stop();
-        }
+        audioSrc.PlayOneShot(list[0]);
     }
+
+
+
 
     public void PlayRandomSoundAtRandomTime(List<AudioClip> list, float minTime, float maxTime)
     {
@@ -68,6 +60,28 @@ public class RandomAudioPlayer : MonoBehaviour
         yield return new WaitForSeconds(interval);
 
         PlayRandomSound(list);
+        canPlay = true;
+    }
+
+
+
+    //-----------------------------------------------------------------------------------------
+
+    public void LoopCLip(List<AudioClip> list)
+    {
+        if (canPlay && dieStopper.canMove)
+        {
+            StartCoroutine(LoopClipCoroutine(list));
+            canPlay = false;
+        }
+    }
+
+    IEnumerator LoopClipCoroutine(List<AudioClip> list)
+    {
+
+        audioSrc.PlayOneShot(list[0]);
+
+        yield return new WaitForSeconds(list[0].length);
         canPlay = true;
     }
 }

@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     //Audio
     RandomAudioPlayer AudioScript;
     bool soundPlay = true;
+    public GameObject ClipPlayer;
 
     //Animation
     public Animator animator;
@@ -103,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void TakeDamage(int damage, Vector2 direction)
     {
+        ClipPlayer.GetComponent<PlayerSounds>().PlaySound(1);
         currentHP -= damage;
         rigBody2d.AddForce(direction * 5, ForceMode2D.Impulse);
         knockbackeffect = true;
@@ -153,8 +155,13 @@ public class PlayerMovement : MonoBehaviour
 
             //Add HP
             case "addHP":
-                currentHP++;
-                UpdateSlider();
+                ClipPlayer.GetComponent<PlayerSounds>().PlaySound(2);
+
+                if(currentHP < maxHP)
+                {
+                    currentHP++;
+                    UpdateSlider();
+                }
                 Destroy(collision.gameObject);
                 break;
         }

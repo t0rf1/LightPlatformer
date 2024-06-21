@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
 
     public static event Action<gameState> OnGameStateChanged;
 
+
+    RandomAudioPlayer AudioScript;
+
     void Awake()
     {
         Instance = this;
@@ -19,6 +22,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         UpdateGameState(gameState.Game);
+        AudioScript = GetComponent<RandomAudioPlayer>();
     }
 
     public void UpdateGameState(gameState newState)

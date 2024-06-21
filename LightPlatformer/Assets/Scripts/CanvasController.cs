@@ -37,4 +37,9 @@ public class CanvasController : MonoBehaviour
     {
         window.SetActive(false);
     }
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

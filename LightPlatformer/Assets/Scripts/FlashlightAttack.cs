@@ -88,6 +88,10 @@ public class FlashlightAttack : MonoBehaviour
     {
         canAttack = true;
     }
+    void StartedRecharging()
+    {
+        AudioScript.PlayRandomSound(AudioScript.clipList2);
+    }
 
     //Adds object to list on collision enter, removes on collision exit
     void OnTriggerEnter2D(Collider2D collision)
