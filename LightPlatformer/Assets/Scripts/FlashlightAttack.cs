@@ -17,11 +17,14 @@ public class FlashlightAttack : MonoBehaviour
 
     DieStopper dieStopper;
 
+    GameObject player_obj;
+
     void Start()
     {
         canAttack = true;
         AudioScript = GetComponent<RandomAudioPlayer>();
         dieStopper = GetComponent<DieStopper>();
+        player_obj = GameObject.Find("Player");
     }
 
     void Update()
@@ -42,6 +45,9 @@ public class FlashlightAttack : MonoBehaviour
         {
             if (canAttack)
             {
+
+                player_obj.GetComponent<PlayerMovement>().Vibrator(.5f, .5f, .1f);
+
                 AudioScript.PlayRandomSound(AudioScript.clipList1);
                 animator.SetTrigger("Attacked");
                 canAttack = false;
@@ -87,6 +93,8 @@ public class FlashlightAttack : MonoBehaviour
     void SetCanAttack()
     {
         canAttack = true;
+
+        player_obj.GetComponent<PlayerMovement>().Vibrator(.3f, .3f, .2f);
     }
     void StartedRecharging()
     {

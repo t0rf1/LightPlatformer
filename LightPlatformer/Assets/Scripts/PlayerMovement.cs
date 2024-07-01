@@ -36,12 +36,14 @@ public class PlayerMovement : MonoBehaviour
     //Animation
     public Animator animator;
 
+    GameObject inputChecker_obj;
 
     void Start()
     {
         rigBody2d = GetComponent<Rigidbody2D>();
         collider2d = GetComponent<CapsuleCollider2D>();
         AudioScript = GetComponent<RandomAudioPlayer>();
+        inputChecker_obj = GameObject.Find("InputChecker");
 
         currentHP = maxHP;
     }
@@ -109,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
         rigBody2d.AddForce(direction * 5, ForceMode2D.Impulse);
         knockbackeffect = true;
 
-        if(currentHP <= 0)
+        if (currentHP <= 0)
         {
             Die();
         }
@@ -128,10 +130,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (distanceToEnemy >= 0)
         {
+            Vibrator(0f, 1f, .1f);
             return new Vector2(-1, .7f);
         }
         else //if (distanceToEnemy <= 0)
         {
+            Vibrator(1f, 0f, .1f);
             return new Vector2(1, .7f);
         }
     }
@@ -139,6 +143,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log("dies");
         GameManager.Instance.UpdateGameState(gameState.DeathScreen);
+
+        Vibrator(.1f, .1f, 3f);
+
         Time.timeScale = 0;
     }
 
@@ -182,5 +189,20 @@ public class PlayerMovement : MonoBehaviour
                 knockbackeffect = false;
                 break;
         }
+    }
+
+    public void Vibrator(float leftForce, float rightForce, float duration)
+    {
+        if(inputChecker_obj.GetComponent<InputChecker>().currentInputMode == InputChecker.InputMode.Gamepad)
+        {
+            Gamepad.current.SetMotorSpeeds(leftForce, rightForce);
+            StartCoroutine(HapticsStop(duration));
+        }
+    }
+
+    IEnumerator HapticsStop(float vibrationLength)
+    {
+        yield return new WaitForSecondsRealtime(vibrationLength);
+        Gamepad.current.SetMotorSpeeds(0f, 0f);
     }
 }

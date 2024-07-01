@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ICON_scaled_16x_pngcrushed_0: -937629555089844749
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
